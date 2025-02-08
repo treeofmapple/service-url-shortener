@@ -1,0 +1,40 @@
+spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    clean-disabled: true
+    #clean-on-validation-error: false
+    validate-on-migrate: true
+  datasource:
+    url: ${spring_datasource_url}?ssl=true&sslmode=require
+    username: ${spring_datasource_user}
+    password: ${spring_datasource_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      max-lifetime: 550000
+      idle-timeout: 300000
+      minimum-idle: 5
+      maximum-pool-size: 20
+      connection-test-query: SELECT 1
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+  data:
+    redis:
+      host: ${redis.host}
+      port: ${redis.port}
+      username: ${redis.username}
+      password: ${redis.password}
+      timeout: 5000
+      ssl:
+        enabled: ${redis.ssl}
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          time-between-eviction-runs: 1s

@@ -1,0 +1,89 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+  output:
+    ansi:
+      enabled: always
+  aop:
+    auto: true # When you don't need logging.
+  banner:
+    location: classpath:banner.txt
+  main:
+    banner-mode: console
+  security:
+    user: 
+      name: admin
+      password: ${spring.security.password}
+  data:
+    redis:
+      host: ${redis.host.test}
+      port: ${redis.port.test}
+      username: ${redis.username.test}
+      password: ${redis.password.test}
+      timeout: 5000
+      ssl:
+        enabled: false
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 0
+          time-between-eviction-runs: 1s
+
+application:
+  database:
+    expired:
+      time: 1200000
+  redis:
+    default:
+      time:
+        shortUrl: "10m"
+        userSessions: "1h"
+    sheduled:
+      connection:
+        time: 300000
+      syncronization:
+        time: 300000 # five minutes
+  security:
+    jwt:
+      secret-key: ${spring.jwt.secret-key}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "loggers, health" # health, info, loggers, metrics
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      access: none
+logging:
+  level:
+    root: info
+    org:
+      springframework: warn
+      boot: error
+      data:
+        redis: debug
+  pattern:
+    console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'
+
+info:
+  app:
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+    java:
+      version: ${java.version}

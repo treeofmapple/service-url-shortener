@@ -1,0 +1,39 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "loggers, health" # health, info, loggers, metrics
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      access: none
+logging:
+  level:
+    root: info
+    org:
+      springframework: warn
+      boot: error
+      data:
+        redis: debug
+  pattern:
+    console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  aop:
+    auto: true # When you don't need logging.
+  banner:
+    location: classpath:banner.txt
+  main:
+    banner-mode: console
+
+info:
+  app:
+    name: ${project.name}
+    description: ${project.description}
+    version: ${project.version}
+    java:
+      version: ${java.version}

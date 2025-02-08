@@ -1,0 +1,23 @@
+application:
+  database:
+    expired:
+      time: 1200000
+  redis:
+    default:
+      time:
+        shortUrl: "10m"
+        userSessions: "1h"
+    sheduled:
+      connection:
+        time: 300000
+      syncronization:
+        time: 300000 # five minutes
+  security:
+    jwt:
+      secret-key: ${spring.jwt.secret-key}
+
+spring:
+  security:
+    user: 
+      name: admin
+      password: ${spring.security.password}

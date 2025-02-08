@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: ${spring.active.profiles} # log, debug, database, service
+  application:
+      name: UrlShortener
+ 
+server:
+  port: 8000
+  servlet:
+    context-path:

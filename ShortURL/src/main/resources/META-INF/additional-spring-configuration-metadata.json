@@ -1,0 +1,52 @@
+{"properties": [
+  {
+    "name": "application.security.jwt.secret-key",
+    "type": "java.lang.String",
+    "description": "A description for 'application.security.jwt.secret-key'"
+  },
+  {
+    "name": "application.redis.sheduled.time",
+    "type": "java.lang.String",
+    "description": "A description for 'application.redis.sheduled.time'"
+  },
+  {
+    "name": "application.redis.default.time.short-url",
+    "type": "java.lang.String",
+    "description": "A description for 'application.redis.default.time.short-url'"
+  },
+  {
+    "name": "application.redis.default.time.userSessions",
+    "type": "java.lang.String",
+    "description": "A description for 'application.redis.default.time.userSessions'"
+  },
+  {
+    "name": "application.database.expired.time",
+    "type": "java.lang.String",
+    "description": "A description for 'application.database.expired.time'"
+  },
+  {
+    "name": "application.redis.sheduled.connection.time",
+    "type": "java.lang.String",
+    "description": "A description for 'application.redis.sheduled.connection.time'"
+  },
+  {
+    "name": "application.redis.sheduled.syncronization.time",
+    "type": "java.lang.String",
+    "description": "A description for 'application.redis.sheduled.syncronization.time'"
+  },
+  {
+    "name": "spring.devtools.restart.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.enabled'"
+  },
+  {
+    "name": "spring.devtools.restart.quiet-period",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.quiet-period'"
+  },
+  {
+    "name": "spring.devtools.restart.poll-interval",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.devtools.restart.poll-interval'"
+  }
+]}

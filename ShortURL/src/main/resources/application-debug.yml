@@ -1,0 +1,8 @@
+debug: false
+spring:
+  devtools:
+    restart:
+      enabled: true
+      poll-interval: 80s
+      quiet-period: 2s
+
