@@ -7,13 +7,13 @@ spring:
     #clean-on-validation-error: false
     validate-on-migrate: true
   datasource:
-    url: ${spring_datasource_url}?ssl=true&sslmode=require
-    username: ${spring_datasource_user}
-    password: ${spring_datasource_password}
+    url: ${DATASOURCE_URL}?ssl=true&sslmode=require
+    username: ${DATASOURCE_USER}
+    password: ${DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
-      max-lifetime: 550000
-      idle-timeout: 300000
+      max-lifetime: ${DATASOURCE_MAXLIFETIME}
+      idle-timeout: ${DATASOURCE_IDLE-TIMEOUT}
       minimum-idle: 5
       maximum-pool-size: 20
       connection-test-query: SELECT 1
@@ -25,13 +25,13 @@ spring:
 
   data:
     redis:
-      host: ${redis.host}
-      port: ${redis.port}
-      username: ${redis.username}
-      password: ${redis.password}
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      username: ${REDIS_USERNAME}
+      password: ${REDIS_PASSWORD}
       timeout: 5000
       ssl:
-        enabled: ${redis.ssl}
+        enabled: ${REDIS_SSL}
       lettuce:
         pool:
           max-active: 8

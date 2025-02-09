@@ -1,7 +1,7 @@
 application:
   database:
     expired:
-      time: 1200000
+      time: ${EXPIRED_DATA} # Clean expired URL's
   redis:
     default:
       time:
@@ -9,15 +9,15 @@ application:
         userSessions: "1h"
     sheduled:
       connection:
-        time: 300000
+        time: ${REDIS_CONNECTION} # Check if the redis are connected on system.
       syncronization:
-        time: 300000 # five minutes
+        time: ${REDIS_SYNC} # Syncronize the data with the user count from the redis to database
   security:
     jwt:
-      secret-key: ${spring.jwt.secret-key}
+      secret-key: ${SECRET-KEY}
 
 spring:
   security:
     user: 
       name: admin
-      password: ${spring.security.password}
+      password: ${SECURITY_PASSWORD}

@@ -24,16 +24,16 @@ spring:
   security:
     user: 
       name: admin
-      password: ${spring.security.password}
+      password: ${SECURITY_PASSWORD}
   data:
     redis:
-      host: ${redis.host.test}
-      port: ${redis.port.test}
-      username: ${redis.username.test}
-      password: ${redis.password.test}
+      host: ${REDIS_HOST_TEST}
+      port: ${REDIS_PORT_TEST}
+      username: ${REDIS_USERNAME_TEST}
+      password: ${REDIS_PASSWORD_TEST}
       timeout: 5000
       ssl:
-        enabled: false
+        enabled: ${REDIS_SSL_TEST}
       lettuce:
         pool:
           max-active: 8
@@ -57,7 +57,7 @@ application:
         time: 300000 # five minutes
   security:
     jwt:
-      secret-key: ${spring.jwt.secret-key}
+      secret-key: ${SECRET-KEY}
 
 management:
   endpoints:

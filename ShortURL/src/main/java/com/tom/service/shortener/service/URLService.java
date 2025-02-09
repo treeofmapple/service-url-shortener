@@ -54,7 +54,8 @@ public class URLService {
 
 		if (repository.existsByOriginalUrl(request.url())) {
 			log.warn("URL already exists: {}", request);
-			throw new DuplicateException(String.format("URL already exists: %s", request.url()));
+			var originalURL = repository.findByOriginalUrl(request.url());			
+			throw new DuplicateException(String.format("URL already exists: %s, their link is %s", request.url(), originalURL));
 		}
 
 		String shortUrl;

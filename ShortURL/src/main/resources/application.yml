@@ -1,10 +1,16 @@
 spring:
   profiles:
-    active: ${spring.active.profiles} # log, debug, database, service
+    active: log, database, service # log, debug, database, service
   application:
       name: UrlShortener
- 
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
 server:
-  port: 8000
+  port: ${SERVER_PORT:8000}
   servlet:
     context-path:

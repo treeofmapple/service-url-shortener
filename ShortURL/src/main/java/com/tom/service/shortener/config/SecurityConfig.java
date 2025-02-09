@@ -39,6 +39,8 @@ import lombok.RequiredArgsConstructor;
 			http.csrf(AbstractHttpConfigurer::disable)
 					.exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
 					.authorizeHttpRequests(auth -> auth
+							.requestMatchers("/swagger-ui/**").denyAll()
+						    .requestMatchers("/v3/api-docs/**").denyAll()
 							.requestMatchers("/actuator/**").authenticated()
 							.requestMatchers("/api/v1/dev/**").authenticated()
 							.requestMatchers("/api/v1/**").permitAll()
