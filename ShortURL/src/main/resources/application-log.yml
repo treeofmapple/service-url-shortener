@@ -1,8 +1,12 @@
 management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
   endpoints:
     web:
       exposure:
-        include: "loggers, health" # health, info, loggers, metrics
+        include: "info, health, prometheus" # health, info, loggers, metrics
   endpoint:
     health:
       show-details: always
@@ -18,6 +22,15 @@ logging:
         redis: debug
   pattern:
     console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'
+
+springdoc:
+  default-produces-media-type: application/json
+  default-consumes-media-type: application/json
+  api-docs:
+    enabled: ${SWAGGER_ENABLE:false}
+  swagger-ui:
+    enabled: ${SWAGGER_ENABLE:false}
+    path: ${SWAGGER_URL:/docs}
 
 spring:
   output:

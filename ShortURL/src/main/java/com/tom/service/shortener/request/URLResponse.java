@@ -23,26 +23,10 @@ public record URLResponse(
 		@Schema(
 				accessMode = Schema.AccessMode.READ_ONLY, 
 				type = "string", 
-				description = "Data de Criação", 
-				format = "date-time", 
-				example = "2025-01-27T12:00:00")
-		LocalDateTime dataCriacao,
-
-		@Schema(
-				accessMode = Schema.AccessMode.READ_ONLY, 
-				type = "string", 
 				description = "Data de Expiração", 
 				format = "date-time", 
 				example = "2025-01-27T12:00:00")
-		LocalDateTime dataExpiracao,
-		
-		@Schema(
-				accessMode = Schema.AccessMode.READ_ONLY, 
-				type = "int", 
-				description = "Data de Expiração", 
-				format = "int", 
-				example = "4")
-		int accessCount
+		LocalDateTime dataExpiracao
 		
 		) {
 

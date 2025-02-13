@@ -8,22 +8,29 @@
         <listEntry value="1"/>
     </listAttribute>
     <mapAttribute key="org.eclipse.debug.core.environmentVariables">
-        <mapEntry key="DATASOURCE_IDLE-TIMEOUT" value="180000"/>
-        <mapEntry key="DATASOURCE_MAXLIFETIME" value="300000"/>
-        <mapEntry key="DATASOURCE_PASSWORD" value="0"/>
-        <mapEntry key="DATASOURCE_URL" value="0"/>
-        <mapEntry key="DATASOURCE_USER" value="0"/>
-        <mapEntry key="EXPIRED_DATA" value="1200000"/>
-        <mapEntry key="REDIS_CONNECTION" value="30000"/>
+        <mapEntry key="DB_HOST" value="0"/>
+        <mapEntry key="DB_IDLE-TIMEOUT" value="0"/>
+        <mapEntry key="DB_MAXLIFETIME" value="0"/>
+        <mapEntry key="DB_NAME" value="0"/>
+        <mapEntry key="DB_PASSWORD" value="0"/>
+        <mapEntry key="DB_PORT" value="0"/>
+        <mapEntry key="DB_USER" value="0"/>
+        <mapEntry key="EXPIRED_DATA" value="0"/>
+        <mapEntry key="PROMETHEUS_REGION" value="0"/>
+        <mapEntry key="REDIS_CONNECTION" value="0"/>
         <mapEntry key="REDIS_HOST" value="0"/>
         <mapEntry key="REDIS_PASSWORD" value="0"/>
         <mapEntry key="REDIS_PORT" value="0"/>
-        <mapEntry key="REDIS_SSL" value="false"/>
-        <mapEntry key="REDIS_SYNC" value="300000"/>
+        <mapEntry key="REDIS_SSL" value="0"/>
+        <mapEntry key="REDIS_SYNC" value="0"/>
+        <mapEntry key="REDIS_TIMEOUT" value="0"/>
         <mapEntry key="REDIS_USERNAME" value="0"/>
+        <mapEntry key="REMOTE_WRITE_URL" value="0"/>
         <mapEntry key="SECRET-KEY" value="0"/>
         <mapEntry key="SECURITY_PASSWORD" value="0"/>
-        <mapEntry key="SERVER_PORT" value="8000"/>
+        <mapEntry key="SERVER_PORT" value="0"/>
+        <mapEntry key="SWAGGER_ENABLE" value="0"/>
+        <mapEntry key="SWAGGER_URL" value="0"/>
     </mapAttribute>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>

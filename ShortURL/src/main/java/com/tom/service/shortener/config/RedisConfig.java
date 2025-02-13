@@ -68,6 +68,7 @@ public class RedisConfig {
     @Scheduled(fixedRateString = "${application.redis.sheduled.connection.time:300000}")
     String checkConnection() {
         try (RedisConnection connection = redisConnectionFactory.getConnection()) {
+        	log.info("Connection on Redis Database successfull: {}", LocalDateTime.now());
             return connection.ping();
         } catch (RedisConnectionFailureException e) {
         	log.error("Coulnd't connect on Redis Database: {}", LocalDateTime.now());

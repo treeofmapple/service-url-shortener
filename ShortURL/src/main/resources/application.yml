@@ -1,14 +1,8 @@
 spring:
   profiles:
-    active: log, database, service # log, debug, database, service
+    active: log, database, service, prometheus # log, debug, database, service
   application:
-      name: UrlShortener
-
-springdoc:
-  api-docs:
-    enabled: false
-  swagger-ui:
-    enabled: false
+      name: URLShortener
 
 server:
   port: ${SERVER_PORT:8000}

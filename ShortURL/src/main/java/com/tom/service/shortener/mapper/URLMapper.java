@@ -28,9 +28,7 @@ public interface URLMapper {
 	
 	@Mapping(source = "shortUrl", target = "shortUrl")
 	@Mapping(source = "originalUrl", target = "originalUrl")
-	@Mapping(source = "dateCreated", target = "dataCriacao")
 	@Mapping(source = "expirationTime", target = "dataExpiracao")
-	@Mapping(source = "accessCount", target = "accessCount")
 	URLResponse toUrlResponse(URL url);
 
 	@Mapping(source = "originalUrl", target = "originalUrl")

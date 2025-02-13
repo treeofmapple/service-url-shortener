@@ -11,6 +11,7 @@ import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tom.service.shortener.common.URLEncoding;
 import com.tom.service.shortener.exception.DuplicateException;
@@ -54,8 +55,9 @@ public class URLService {
 
 		if (repository.existsByOriginalUrl(request.url())) {
 			log.warn("URL already exists: {}", request);
-			var originalURL = repository.findByOriginalUrl(request.url());			
-			throw new DuplicateException(String.format("URL already exists: %s, their link is %s", request.url(), originalURL));
+			var originalURL = repository.findByOriginalUrl(request.url());
+			throw new DuplicateException(
+					String.format("URL already exists: %s, their link is %s", request.url(), originalURL));
 		}
 
 		String shortUrl;
@@ -73,51 +75,50 @@ public class URLService {
 		} catch (RedisConnectionFailureException e) {
 			log.warn("Failed to connect to Redis for URL: {}, cause: {}", request, e.getMessage());
 		}
-
+		urlEntity.setShortUrl(ServletUriComponentsBuilder.fromCurrentContextPath().toUriString() + "/" + shortUrl);
 		var response = mapper.toUrlResponse(urlEntity);
-
 		log.info("Successfully shortened URL: {} -> {}", request.url(), shortUrl);
 		return response;
 	}
 
 	public String redirectURL(URLShortRequest request) {
-	    log.info("Redirecting for short URL: {}", request.url());
-	    String originalUrl = null;
+		log.info("Redirecting for short URL: {}", request.url());
+		String originalUrl = null;
 
-	    if (isRedisAvailable()) {
-	        try {
-	            originalUrl = redisTemplate.opsForValue().get(request.url());
+		if (isRedisAvailable()) {
+			try {
+				originalUrl = redisTemplate.opsForValue().get(request.url());
 
-	            if (originalUrl != null) {
-	                log.info("URL found in Redis cache: {}", originalUrl);
-	            }
-	        } catch (RedisConnectionFailureException e) {
-	            log.warn("Failed to connect to Redis for URL: {}, cause: {}", request.url(), e.getMessage());
-	        }
-	    } else {
-	        log.warn("Skipping Redis request; Redis is unavailable.");
-	    }
+				if (originalUrl != null) {
+					log.info("URL found in Redis cache: {}", originalUrl);
+				}
+			} catch (RedisConnectionFailureException e) {
+				log.warn("Failed to connect to Redis for URL: {}, cause: {}", request.url(), e.getMessage());
+			}
+		} else {
+			log.warn("Skipping Redis request; Redis is unavailable.");
+		}
 
-	    if (originalUrl == null) {
-	        URL urlFromDb = repository.findByShortUrl(request.url()).orElseThrow(() -> {
-	            log.warn("The requested short URL: {}, was not found", request.url());
-	            return new NotFoundException("Short URL not found");
-	        });
+		if (originalUrl == null) {
+			URL urlFromDb = repository.findByShortUrl(request.url()).orElseThrow(() -> {
+				log.warn("The requested short URL: {}, was not found", request.url());
+				return new NotFoundException("Short URL not found");
+			});
 
-	        originalUrl = urlFromDb.getOriginalUrl();
+			originalUrl = urlFromDb.getOriginalUrl();
 
-	        if (isRedisAvailable()) {
-	            try {
-	                redisTemplate.opsForValue().set(request.url(), originalUrl, Duration.ofMinutes(3));
-	            } catch (RedisConnectionFailureException e) {
-	                log.warn("Failed to connect to Redis for URL: {}, cause: {}", request.url(), e.getMessage());
-	            }
-	        } else {
-	            log.warn("Skipping Redis request; Redis is unavailable.");
-	        }
-	    }
-	    incrementAccessCountInRedis(request.url(), LocalDateTime.now());
-	    return originalUrl;
+			if (isRedisAvailable()) {
+				try {
+					redisTemplate.opsForValue().set(request.url(), originalUrl, Duration.ofMinutes(3));
+				} catch (RedisConnectionFailureException e) {
+					log.warn("Failed to connect to Redis for URL: {}, cause: {}", request.url(), e.getMessage());
+				}
+			} else {
+				log.warn("Skipping Redis request; Redis is unavailable.");
+			}
+		}
+		incrementAccessCountInRedis(request.url(), LocalDateTime.now());
+		return originalUrl;
 	}
 
 	public URLComplete findFullURL(URLShortRequest request) {
