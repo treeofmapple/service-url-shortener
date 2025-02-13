@@ -18,7 +18,7 @@
         <mapEntry key="DB_HOST" value="0"/>
         <mapEntry key="DB_IDLE-TIMEOUT" value="0"/>
         <mapEntry key="DB_MAXLIFETIME" value="0"/>
-        <mapEntry key="DB_NAME" value="0"/>
+        <mapEntry key="DB_DATABASE" value="0"/>
         <mapEntry key="DB_PASSWORD" value="0"/>
         <mapEntry key="DB_PORT" value="0"/>
         <mapEntry key="DB_USER" value="0"/>
