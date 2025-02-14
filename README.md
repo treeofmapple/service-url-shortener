@@ -6,6 +6,7 @@
 <p>ShortURL é um encurtador de URLs eficiente e seguro, desenvolvido em Spring Boot, que permite converter links longos em URLs curtas e fáceis de compartilhar. O sistema suporta autenticação JWT, cache com Redis, persistência no PostgreSQL e documentação via Swagger ou Postman.
 </p>
 </div>
+
 > **[Read this Documentation in English](README-EN.md)**
 
 ## 📖 **Índice**
