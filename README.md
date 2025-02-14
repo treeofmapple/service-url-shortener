@@ -1,13 +1,14 @@
 <div align = "center">
 <a>
-<img src="images/logo.png" alt="Logo" width="80" height="80">
+<img src="logo.png" alt="Logo" width="80" height="80">
 </a>
 <br>
 <p>ShortURL é um encurtador de URLs eficiente e seguro, desenvolvido em Spring Boot, que permite converter links longos em URLs curtas e fáceis de compartilhar. O sistema suporta autenticação JWT, cache com Redis, persistência no PostgreSQL e documentação via Swagger ou Postman.
 </p>
 </div>
 > **[Read this Documentation in English](README-EN.md)**
-## ## 📖 **Índice**
+
+## 📖 **Índice**
 
 - [Visão Geral](#-vis%C3%A3o-geral)
 - [Pré-requisitos](#-pr%C3%A9-requisitos)
