@@ -1,3 +1,11 @@
+<div align = "center">
+<a>
+<img src="logo.png" alt="Logo" width="80" height="80">
+</a>
+<br>
+ShortURL is an efficient and secure URL shortener built on Spring Boot that allows you to convert long links into short, easy-to-share URLs. The system supports JWT authentication, caching with Redis, persistence in PostgreSQL, and documentation via Swagger or Postman.
+
+
 > **[Leia esta documentação em português](README-PT.md)**
 
 ## 📖 **Index**
