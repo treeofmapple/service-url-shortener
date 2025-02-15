@@ -44,7 +44,7 @@ spring:
 application:
   database:
     expired:
-      time: 1200000
+      time: ${EXPIRED_DATA:1200000}
   redis:
     default:
       time:
@@ -52,9 +52,9 @@ application:
         userSessions: "1h"
     sheduled:
       connection:
-        time: 300000
+        time: ${REDIS_CONNECTION:300000} 
       syncronization:
-        time: 300000 # five minutes
+        time: ${REDIS_SYNC:300000} # five minutes
   security:
     jwt:
       secret-key: ${SECRET-KEY}
@@ -63,7 +63,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: "loggers, health" # health, info, loggers, metrics
+        include: "health, info, prometheus" # health, info, loggers, metrics
   endpoint:
     health:
       show-details: always
