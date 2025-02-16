@@ -13,7 +13,7 @@
 	<version>v1.11-SNAPSHOT</version>
 	<name>ShortURL</name>
     <description>Encurtador de URL</description>
-    <url>https://github.com/treeofmapple/Java-Url-Shortener</url>
+    <url>https://github.com/treeofmapple/URL-Shortener</url>
 
     <licenses>
         <license>
