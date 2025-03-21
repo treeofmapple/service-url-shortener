@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
 public class URLController {
 
 	private final URLService service;
-
 	
     @PostMapping("/shorten")
     public ResponseEntity<URLResponse> shortenURL(@RequestBody @Valid URLRequest request) {

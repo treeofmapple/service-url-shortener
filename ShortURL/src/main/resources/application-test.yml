@@ -44,7 +44,7 @@ spring:
 application:
   database:
     expired:
-      time: ${EXPIRED_DATA:1200000}
+      time: 1200000
   redis:
     default:
       time:
@@ -52,38 +52,9 @@ application:
         userSessions: "1h"
     sheduled:
       connection:
-        time: ${REDIS_CONNECTION:300000} 
+        time: 300000
       syncronization:
-        time: ${REDIS_SYNC:300000} # five minutes
+        time: 300000 # five minutes
   security:
     jwt:
       secret-key: ${SECRET-KEY}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "health, info, prometheus" # health, info, loggers, metrics
-  endpoint:
-    health:
-      show-details: always
-    shutdown:
-      access: none
-logging:
-  level:
-    root: info
-    org:
-      springframework: warn
-      boot: error
-      data:
-        redis: debug
-  pattern:
-    console: '%n %d{HH:mm:ss} | %highlight(%-5level) | %cyan(%logger{30}) | %msg'
-
-info:
-  app:
-    name: ${project.name}
-    description: ${project.description}
-    version: ${project.version}
-    java:
-      version: ${java.version}

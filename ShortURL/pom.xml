@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.2</version>
+		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tom.service</groupId>
@@ -13,7 +13,7 @@
 	<version>v1.11-SNAPSHOT</version>
 	<name>ShortURL</name>
     <description>Encurtador de URL</description>
-    <url>https://github.com/treeofmapple/URL-Shortener</url>
+    <url>https://github.com/treeofmapple/Java-Url-Shortener</url>
 
     <licenses>
         <license>
@@ -131,13 +131,6 @@
 	        <version>0.2.0</version>
 	        <scope>compile</scope>
     	</dependency>
-
-        <!-- Logging -->
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 
         <!-- OpenAPI / Swagger -->
         <dependency>
