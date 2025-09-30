@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: console, ${PROFILE:dev}
+  application:
+      name: URLShortener
+
+server:
+  port: ${SERVER_PORT:8000}
