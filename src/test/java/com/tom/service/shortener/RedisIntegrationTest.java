@@ -17,9 +17,6 @@ import org.testcontainers.utility.DockerImageName;
 
 import com.tom.service.shortener.common.RedisUtils;
 
-import lombok.extern.log4j.Log4j2;
-
-@Log4j2
 @DataRedisTest
 @Import(RedisUtils.class)
 @TestMethodOrder(OrderAnnotation.class)
