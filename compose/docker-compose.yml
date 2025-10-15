@@ -1,8 +1,12 @@
 services:
   service-url-shortener:
-    build: .
+    build:
+      context: ..
+      dockerfile: compose/Dockerfile
     container_name: url-shortener
     restart: unless-stopped
+    volumes:
+      - maven_cache:/root/.m2
     depends_on:
       - postgres
       - redis
@@ -41,4 +45,6 @@ volumes:
   postgres_data:
     driver: local
   redis_data:
+    driver: local
+  maven_cache:
     driver: local
