@@ -26,10 +26,9 @@ ShortURL permite aos usuários encurtar URLs e acompanhar estatísticas sobre os
 
 **Principais Funcionalidades:**  
 - Encurtamento de URLs.
-- Autenticação e autorização do `/actuator` via JWT.
 - Suporte a Redis para melhorar o desempenho.
 - Integração com PostgreSQL para persistência.
-- API documentada via **Swagger** ou **Postman**.
+- API documentada via **Postman**.
 - Configurações flexíveis via **variáveis de ambiente**.
 
 ---
@@ -45,54 +44,20 @@ ShortURL permite aos usuários encurtar URLs e acompanhar estatísticas sobre os
 ## 💻 **Tecnologias**
 
 - **Spring Boot** (Framework principal)
-- **Spring Security** (Autenticação e autorização via JWT)
 - **Spring Data JPA** (Persistência no banco relacional)
 - **Spring Data Redis** (Cache para encurtamento de URLs)
 - **MapStruct** (Conversão entre DTOs e entidades)
 - **JWT (JJWT)** (Autenticação e segurança)
 - **Flyway** (Migração de banco de dados)
-- **Swagger (SpringDoc OpenAPI)** (Documentação da API)
 - **PostgreSQL** (Banco de dados principal)
 - **H2 Database** (Banco em memória para testes)
-- **Redis** (Opcional, usado para cache e performance)
-- **Prometheus** (Opcional, usado para monitoramento)
 
----
-## 📜**Swagger**
-
-O projeto disponibiliza documentação para a API via Swagger. Para acessar, reative o swagger no `application.yml` e no `SecurityConfig` inicie o sistema e vá até:
-
-🔗 **`http://localhost:8000/swagger-ui.html`**
-
----
 ## 🔗**Postman**
 
 Coleção de testes para **Postman** disponível:
 
 [Postman Collection](https://www.postman.com/sam-goldman11/programs-of-mapple/collection/r2yhoqi/url-shortener)
 
----
-## <img src="https://img.icons8.com/plasticine/100/java-coffee-cup-logo.png" alt="java-coffee-cup-logo" width="50" height="50" style="position: relative; top: 10px;">**Instalação do Programa**
-
-Configure os arquivos disponíveis com as variáveis de ambiente detalhadas no arquivo `config.args` para deploy. Caso esteja realizando testes, utilize `testes.args` para configurar os parâmetros adequados para um ambiente de teste ou definir os atributos diretamente na IDE na versão mais recente.
-
-Para inicializar o programa de forma automática com as variáveis de ambiente configuradas, utilize um dos seguintes scripts disponíveis:
-
-- **`run.bat`** (Para Windows)
-- **`run.ps1`** (Para Windows PowerShell)
-
-Esses scripts garantem que todas as variáveis de ambiente sejam carregadas corretamente antes da execução do programa Java.
-
----
-## <img><img src="https://user-images.githubusercontent.com/11943860/46922575-7017cf80-cfe1-11e8-845a-0cd198fb546c.png" alt="java-coffee-cup-logo" width="30" height="30" style="position: relative; top: 5px;"> **Eclipse IDE** 
-
-O projeto inclui arquivos de configuração para o **Eclipse IDE**, que podem ser importados diretamente na **Run Configuration**. Isso facilita o carregamento automático das variáveis de ambiente, alternar entre os diferentes tipos de implementação, como:
-
-- **Ambiente de Desenvolvimento**
-- **Ambiente de Testes**
-- **Deploy em Produção**
-
----
 ## ⚙️ **Variaveis do Ambiente**
 
 | **Description**                                          | **Parameter**          | **Default values** |
@@ -115,10 +80,6 @@ O projeto inclui arquivos de configuração para o **Eclipse IDE**, que podem se
 | `SSL do Redis`                                           | `REDIS_SSL`            | `NONE`             |
 | `Tempo para verificar conexão Redis`                     | `REDIS_CONNECTION`<br> | `300000`<br>       |
 | `Sincronização de dados Redis -> Banco`                  | `REDIS_SYNC`           | `300000`           |
-| `Prometheus logging com docker ou no aws` - Experimental | `PROMETHEUS_REGION`    | `NONE`             |
-| `Prometheus logging com docker ou no aws` - Experimental | `REMOTE_WRITE_URL`     | `NONE`             |
-| `Habilitar ou desabilitar o Swagger`                     | `SWAGGER_ENABLE`       | `false`            |
-| `Url do Swagger`                                         | `SWAGGER_URL`          | `/docs`            |
 
 ---
 ## **Testes**
@@ -126,24 +87,9 @@ Para executar os testes, rode com os parametros especificos para ambiente de tes
 >🚨 cheque os [requisitos](#-pr%C3%A9-requisitos)
 
 ```
-mvn test
+docker compose -f "docker-compose.test.yml"" up --build
 ```
 
----
-## **Variaveis do Ambiente para Testes**
-
-| **Description**                              | **Parameter**         | **Default values** |
-| -------------------------------------------- | --------------------- | ------------------ |
-| `Porta do servidor`                          | `SERVER_PORT`         | `8000`             |
-| `Chave secreta de Autenticação do /actuator` | `SECRET-KEY`          | `NONE`             |
-| `Senha para acessar o /actuator`             | `SECURITY_PASSWORD`   | `NONE`             |
-| `Usuário do Redis`                           | `REDIS_USERNAME_TEST` | `NONE`             |
-| `Host do Redis`                              | `REDIS_HOST_TEST`     | `NONE`             |
-| `Senha do Redis`                             | `REDIS_PASSWORD_TEST` | `NONE`             |
-| `Porta do Redis`                             | `REDIS_PORT_TEST`     | `NONE`             |
-| `SSL do Redis`                               | `REDIS_SSL_TEST`      | `NONE`             |
-
----
 ## 📄 **Licença**
 
 Este projeto está licenciado sob a **BSD 2-Clause License**. Para mais detalhes, consulte o arquivo [LICENSE](LICENSE).
